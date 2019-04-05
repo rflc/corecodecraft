@@ -1,4 +1,151 @@
-h1
-{
-        width: 4em;
+body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 960px) minmax(0, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+    " lgo ... ... "
+    " cma cma cma"
+    " cmb cmb cmb "
+    " cmc cmc cmc "
+    " cmd cmd cmd";
+
+    grid-gap: 10vh;
 }
+
+.logo
+{
+    grid-area: lgo;
+    justify-self: center; 
+    width: 60px;
+    /*width: 60px;*/
+    /*height: 67.2px;*/
+}
+
+.a {
+  grid-area: cma;
+}
+
+.a .scene {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-areas:
+    "ctr";
+}
+
+#iphone {
+    grid-area: ctr;
+    height: 95vh;
+    align-self: center;
+    margin-left: 34vw;
+}
+
+.b {
+  grid-area: cmb;
+}
+
+.b .scene {
+    display: grid;
+}
+
+#lipd {
+    justify-start: start;
+    height: 95vh;
+}
+
+.c {
+    grid-area: cmc;
+}
+
+.c .scene {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+    " ctr ";
+}
+
+#ripd {
+    grid-area: ctr;
+    justify-self: end;
+    height: 90vh;
+}
+
+
+/* Third Scene */
+.d {
+  grid-area: cmd;
+}
+
+.d .scene {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "left right";
+}
+
+#leftWall, #rightWall {
+    height: 100vh;
+}
+
+#leftWall { 
+    grid-area: left;
+    justify-start: start;
+}
+
+#rightWall {
+    grid-area: right;
+    justify-self: end;
+}
+
+.camera {
+  display: block;
+  height: 200vh;
+}
+
+.scene {
+  z-index: 0;
+  margin: auto;
+  position: sticky;
+  position: -webkit-sticky;
+  top:0;
+  height: 100vh; 
+  height: 100vh;
+}
+
+    .scene img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+.text-mask {
+
+  -webkit-background-clip: text;
+}
+
+.pitch {
+  position: relative;
+  z-index: 1;
+
+  height: 50%;
+
+  display: grid;
+
+}
+
+.pitch p {
+  z-index: 1;
+  margin: auto;
+  color: transparent !important;
+  font-weight: 900;
+  font-size: 6em;
+  /*display: inline;*/
+
+}
+
+.texture {
+
+  background-image: url('res/img/mask.jpg');
+  background-repeat: no-repeat;
+}
+
