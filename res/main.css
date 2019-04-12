@@ -3,19 +3,22 @@ body {
   grid-template-columns: minmax(0, 1fr) minmax(0, 960px) minmax(0, 1fr);
   grid-template-rows: auto;
   grid-template-areas:
-    " lgo ... ... "
-    " cma cma cma"
+    " ... lgo ... "
+    " cma cma cma "
     " cmb cmb cmb "
     " cmc cmc cmc "
-    " cmd cmd cmd";
+    " cmd cmd cmd "
+    " ... tch ... ";
+}
 
-    grid-gap: 10vh;
+.lgo {
+
+    grid-area: lgo;
+    height: 20vh;
 }
 
 .logo
 {
-    grid-area: lgo;
-    justify-self: center; 
     width: 60px;
     /*width: 60px;*/
     /*height: 67.2px;*/
@@ -45,15 +48,17 @@ body {
 
 .b .scene {
     display: grid;
+    margin-bottom: 20vh;
 }
 
 #lipd {
     justify-start: start;
-    height: 95vh;
+    height: 100vh;
 }
 
 .c {
     grid-area: cmc;
+    margin-bottom: 20vh;
 }
 
 .c .scene {
@@ -67,13 +72,13 @@ body {
 #ripd {
     grid-area: ctr;
     justify-self: end;
-    height: 90vh;
+    height: 100vh;
 }
-
 
 /* Third Scene */
 .d {
   grid-area: cmd;
+  margin-bottom: 20vh; 
 }
 
 .d .scene {
@@ -95,6 +100,40 @@ body {
 #rightWall {
     grid-area: right;
     justify-self: end;
+}
+
+.e {
+    grid-area: tch;
+    margin-bottom: 20vh;
+}
+
+.button {
+    width: 600px;
+}
+
+/* Set height for text fields */
+textarea:focus, input:focus{
+    outline: none;
+}
+
+textarea {
+    display: none;
+    height: 100%;
+    width: 93.5%;
+    outline: none;
+    border: none;
+}
+
+.email {
+    display: none;
+    height: 30px;
+    width: 100% 
+    /*width: 70%;*/
+    /*border: none;*/
+}
+
+ .enter {
+    display: none;
 }
 
 .camera {
@@ -130,7 +169,6 @@ body {
   height: 50%;
 
   display: grid;
-
 }
 
 .pitch p {
@@ -148,4 +186,3 @@ body {
   background-image: url('res/img/mask.jpg');
   background-repeat: no-repeat;
 }
-

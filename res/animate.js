@@ -53,28 +53,26 @@ var init = function(){
 // Function unpdated on scroll
 var animate = (function(){
     // Scene one
-    var one = function(pct, rwd) {
+    var one = function(pct) {
 	let tl = new TimelineMax({paused: true});
-	if (rwd)
-	    tl.reverse(pct);
 	tl.to('#hand', 2, {opacity: 0})
 	    .set('#ip', {attr:{mask: ""}}, 1.5);
-	 tl.progress(pct);
+	tl.progress(pct);
     }
 
     // Scene two
-    var two = function(pct, fwd){
+    var two = function(pct){
 	let tl = new TimelineMax({paused: true});
     }
 
     // Scene three
 
-    var three = function(pct, fwd){
+    var three = function(pct){
 	let tl = new TimelineMax({paused: true});
     }
     // Scene Four
 
-    var four = function(ptc, fwd){
+    var four = function(ptc){
 	let tl = new TimelineMax({paused: true});
     }
    
@@ -87,37 +85,29 @@ var animate = (function(){
 var play = (function(){
 
   // closure scope
-  let length;
   let lastY = null;
   let i = 0;
 
   //function called by the event listener
   return function(e){
     let frame = scene[i].getBoundingClientRect();
-    let cam   = camera[i].getBoundingClientRect();
-    length    = cam.height - window.innerHeight;
+    let cam   = camera[i].getBoundingClientRect(); // replace with clientHeight
+    var length = cam.height - window.innerHeight;
+
     // Determine scroll direction
-    if (lastY < window.pageYOffset) {
-      if (frame.top >=  0 && frame.bottom <= window.innerHeight) {
-	// Get camera scroll percentage
-	let pct = ((cam.top / length) * -1).toFixed(2);
-        animate[i](pct, 0);
-      }
-      else if (frame.bottom < 0) {
+    if (lastY < window.pageYOffset && frame.bottom < 0) {
 	i++;
       }
-    }
-    else {
-      if (frame.top <=  0 && frame.bottom <= window.innerHeight) {
-	// Camera scroll percentage
-	let pct = ((cam.top / length) * -1).toFixed(2);
-	// ANIMTION REWIND GOES HERE
-	animate[i](pct, 1);
-      }
-      else if (frame.top > window.innerHeight && (i > 0)) {
+    else if (frame.top > window.innerHeight && (i > 0)) {
 	i--;
-      }
     }
+      if (frame.top ==  0 && frame.bottom == window.innerHeight) {
+	  // Get camera scroll percentage
+	  let pct = ((window.scrollY - 118) / length);
+	  animate[i](pct);
+	  console.log( pct + " : " + window.scrollY);
+	  pct = null;
+      }
 
     lastY = window.pageYOffset;
   }
