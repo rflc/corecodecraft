@@ -8,6 +8,7 @@ body {
     " cmb cmb cmb "
     " cmc cmc cmc "
     " cmd cmd cmd "
+    " stk stk stk "
     " ... tch ... ";
 }
 
@@ -22,6 +23,10 @@ body {
     width: 60px;
     /*width: 60px;*/
     /*height: 67.2px;*/
+}
+
+a {
+    text-decoration: none;
 }
 
 .a {
@@ -103,6 +108,52 @@ body {
 }
 
 .e {
+    grid-area: stk;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 30vh 30vh 30vh;
+    grid-template-areas:
+    " . a .  b  . "
+    " c . d  . e  "
+    " . f .  g .  ";
+
+    justify-items: center;
+}
+
+.e svg {
+    height: 100px;
+    
+}
+
+.e .a {
+    grid-area: a;
+}
+
+.e .b {
+    grid-area: b;
+}
+
+.e .c {
+    grid-area: c;
+}
+
+.e .d {
+    grid-area: d;
+}
+
+.e .e {
+    grid-area: e;
+}
+
+.e .f {
+    grid-area: f;
+}
+
+.e .g {
+    grid-area: g;
+}
+
+.f {
     grid-area: tch;
     margin-bottom: 20vh;
 }
@@ -117,11 +168,37 @@ textarea:focus, input:focus{
 }
 
 textarea {
-    display: none;
+    /*display: none;*/
     height: 100%;
     width: 93.5%;
-    outline: none;
-    border: none;
+    padding: 0.5 em;
+    /*outline: none;*/
+    /*border: none;*/
+    resize: none;
+}
+
+input {
+    /*position:fixed;*/
+
+    /*border:none;*/
+    /*outline:none;*/
+    height:34px;
+    line-height:normal;  
+    font-size:25px;
+    width:260px;
+    font-weight:700;
+    color:#000000;
+    background:transparent;
+    text-align:left;
+}
+
+
+input, textarea {
+    line-height:normal;  
+    font-size: 1em;
+    font-weight: 400;
+    background: transparent;
+    text-align: left;
 }
 
 .email {
