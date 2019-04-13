@@ -125,40 +125,51 @@ a {
     
 }
 
-.e .a {
+.e div:nth-of-type(1) {
     grid-area: a;
 }
 
-.e .b {
+.e div:nth-of-type(2) {
     grid-area: b;
 }
 
-.e .c {
+.e div:nth-of-type(3) {
     grid-area: c;
 }
 
-.e .d {
+.e div:nth-of-type(4) {
     grid-area: d;
 }
 
-.e .e {
+.e div:nth-of-type(5) {
     grid-area: e;
 }
 
-.e .f {
+.e div:nth-of-type(6) {
     grid-area: f;
 }
 
-.e .g {
+.e div:nth-of-type(7) {
     grid-area: g;
 }
 
 .f {
     grid-area: tch;
     margin-bottom: 20vh;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-.contact {
+.f p {i
+    display: inline;
+    float: right;
+    margin-right: .5em;
+    font-size: 1.5em;
+}
+
+.f svg {
     width: 10em;
     transform-origin: left;
     transform: rotateY(48deg);
