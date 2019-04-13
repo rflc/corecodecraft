@@ -158,8 +158,10 @@ a {
     margin-bottom: 20vh;
 }
 
-.button {
-    width: 600px;
+.contact {
+    width: 10em;
+    transform-origin: left;
+    transform: rotateY(48deg);
 }
 
 /* Set height for text fields */
@@ -168,7 +170,7 @@ textarea:focus, input:focus{
 }
 
 textarea {
-    /*display: none;*/
+    display: none;
     height: 100%;
     width: 93.5%;
     padding: 0.5 em;
@@ -178,6 +180,7 @@ textarea {
 }
 
 input {
+    display: none;
     /*position:fixed;*/
 
     /*border:none;*/
