@@ -1,5 +1,6 @@
 // Global variables
 var vh;
+var offset;
 var scene;
 var camera;
 var height;

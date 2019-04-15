@@ -9,7 +9,8 @@ body {
     " cmc cmc cmc "
     " cmd cmd cmd "
     " stk stk stk "
-    " ... tch ... ";
+    " ... tch ... "
+    " ... ... flg ";
 }
 
 .lgo {
@@ -227,6 +228,15 @@ input, textarea {
 
  .enter {
     display: none;
+}
+
+.g {
+    grid-area: flg;
+    justify-self: end;
+}
+
+.g svg {
+    width: 4em;
 }
 
 .camera {
