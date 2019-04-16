@@ -56,8 +56,10 @@ var animate = (function(){
     // Scene one
     var one = function(pct) {
 	let tl = new TimelineMax({paused: true});
-	tl.to('#hand', 2, {opacity: 0})
-	    .set('#ip', {attr:{mask: ""}}, 1.5);
+	tl.set('#imask', {attr:{display: 'visible'}})
+	  .set('#hand', {opacity: 1})
+	  .to('#hand', 2, {opacity: 0})
+	  .to('#imask',.1, {attr:{display: 'none'}}, 2);
 	tl.progress(pct);
     }
 
@@ -104,9 +106,9 @@ var play = (function(){
     }
       if (frame.top ==  0 && frame.bottom == window.innerHeight) {
 	  // Get camera scroll percentage
-	  let pct = ((window.scrollY - 118) / length);
+	  let pct = ((~cam.top+1) / length);
 	  animate[i](pct);
-	  console.log( pct + " : " + window.scrollY);
+	  console.log(pct);
 	  pct = null;
       }
 
