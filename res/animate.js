@@ -58,6 +58,16 @@ var animate = (function(){
 	let tl = new TimelineMax({paused: true});
 	tl.set('#imask', {attr:{display: 'visible'}})
 	  .set('#hand', {opacity: 1})
+	  .set('#i2',{attr:{y:'27%'}})
+	  .set('#i3',{attr:{y:'33%'}})
+	  .set('#i4,#i5,#i6',{attr:{visibility:'hidden'}})
+	  .to('#i1',.5,{attr:{visibility:'visible'}})
+	  .to('#i1',.2,{attr:{visibility:'hidden'}})
+	  .to('#i2,#i3',.2,{attr:{visibility:'hidden'}})
+	  .to('#i2,#i3',2,{attr:{visibility:'visible'}})
+	  .to('#i2',2,{attr:{y:'-10%'}},2)
+	  .to('#i3',2,{attr:{y:'100%'}},2)
+	  .to('#i4,#i5,#i6',2,{attr:{visibility:'visible'}})
 	  .to('#hand', 2, {opacity: 0})
 	  .to('#imask',.2, {attr:{display: 'none'}}, 1.8);
 	tl.progress(pct);
@@ -66,20 +76,28 @@ var animate = (function(){
     // Scene two
     var two = function(pct){
 	let tl = new TimelineMax({paused: true});
+	tl.progress(pct);
     }
 
     // Scene three
-
     var three = function(pct){
 	let tl = new TimelineMax({paused: true});
+	tl.progress(pct);
     }
+    
     // Scene Four
-
-    var four = function(ptc){
+    var four = function(pct){
 	let tl = new TimelineMax({paused: true});
+	tl.set('#lw',{attr:{transform:'translate(-100 0)'}});
+	tl.progress(pct);
+    }
+
+    var five = function(pct){
+	let tl = new TimelineMax({paused: true});
+	tl.progress(pct);
     }
    
-    var arr = [one, two, three, four];
+    var arr = [one, two, three, four, five];
 
     return arr;
 })();

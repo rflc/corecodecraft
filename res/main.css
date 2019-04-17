@@ -245,7 +245,8 @@ input, textarea {
 
 .camera {
   display: block;
-  height: 200vh;
+  /* Duration */
+  height: 300vh;
 }
 
 .scene {
