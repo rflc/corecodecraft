@@ -59,7 +59,7 @@ var animate = (function(){
 	tl.set('#imask', {attr:{display: 'visible'}})
 	  .set('#hand', {opacity: 1})
 	  .to('#hand', 2, {opacity: 0})
-	  .to('#imask',.1, {attr:{display: 'none'}}, 2);
+	  .to('#imask',.2, {attr:{display: 'none'}}, 1.8);
 	tl.progress(pct);
     }
 

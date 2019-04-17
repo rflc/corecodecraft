@@ -108,8 +108,11 @@ a {
     justify-self: end;
 }
 
-.e {
+.E {
     grid-area: stk;
+}
+
+.e {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 30vh 30vh 30vh;
@@ -120,6 +123,7 @@ a {
 
     justify-items: center;
     margin-bottom: 10vh;
+    padding-top: 10vh;
 }
 
 .e svg {
