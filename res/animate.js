@@ -88,7 +88,7 @@ var animate = (function(){
     // Scene Four
     var four = function(pct){
 	let tl = new TimelineMax({paused: true});
-	tl.set('#lw',{attr:{transform:'translate(-100 0)'}});
+	tl.set('#lw',{autoAlpha:1,attr:{transform:'translate(-100 0)'}});
 	tl.progress(pct);
     }
 
