@@ -6,6 +6,7 @@ var camera;
 var height;
 var hStyle;
 var timer = null;
+var callToAction;
 
 
 var init = function(){
@@ -37,6 +38,9 @@ var init = function(){
       .to(str, .7, {opacity: 1}, 1.5)
       .to('#iphone', .1, {opacity: 1}, 1.9);
   
+
+    //Contact Form
+   var callToAction = document.getElementById('c2a');
     // Get vh dimensions
   /*
     var el = document.createElement('div');
@@ -98,7 +102,10 @@ var animate = (function(){
     var five = function(pct){
 	let tl = new TimelineMax({paused: true});
 	tl.set('#wasm,#clang,#devil,#web,#pony,#aws,#swift',{autoAlpha:0})
-	  .to('#wasm',1,{autoAlpha:1},1)
+	  .to('#stack h2, #stack p',0.1,{visibility:'hidden'})
+	  .to('#stack h2',1,{autoAlpha:1})
+	  .to('#stack p',1,{autoAlpha:1},1)
+	  .to('#wasm',1,{autoAlpha:1},2)
 	  .to('#clang',1,{autoAlpha:1},3)
 	  .to('#devil',1,{autoAlpha:1},4)
 	  .to('#web',1,{autoAlpha:1},5)
@@ -148,3 +155,4 @@ var play = (function(){
 // Event Listeners
 document.addEventListener("DOMContentLoaded", init);
 document.addEventListener('scroll', play);
+

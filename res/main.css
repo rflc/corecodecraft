@@ -1,4 +1,6 @@
 body {
+  font-family: helvetica neue, arial, helvetica, freesans, liberation sans, numbus sans l, sans-serif;
+  font-weight: 300;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 960px) minmax(0, 1fr);
   grid-template-rows: auto;
@@ -28,6 +30,10 @@ body {
 
 a {
     text-decoration: none;
+}
+
+p {
+    font-size: 1.2em;
 }
 
 .a {
@@ -140,6 +146,10 @@ a {
     justify-self: start;
 }
 
+#stack>h2, #stack>p{
+    visibility: hidden;
+}
+
 .e div:nth-of-type(2) {
     grid-area: b;
 }
@@ -171,6 +181,7 @@ a {
 .f {
     grid-area: tch;
     margin-bottom: 20vh;
+    margin-top: 20vh;
     
     display: flex;
     align-items: center;
