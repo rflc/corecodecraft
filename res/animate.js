@@ -89,7 +89,7 @@ var animate = (function(){
     var four = function(pct){
 	let tl = new TimelineMax({paused: true});
 	tl.set('#lw',{autoAlpha:1,attr:{transform:'translate(-220 -85) scale(1.2)'}})
-	  .set('#rw',{autoAlpha:1,attr:{transform:'translate(220 -85) scale(1.2)'}})
+	  .set('#rw',{autoAlpha:1,attr:{transform:'translate(145 -85) scale(1.2)'}})
 	  .to('#lw',3,{attr:{transform:'translate(0 0) scale(1)'}})
 	  .to('#rw',3,{attr:{transform:'translate(0 0) scale(1)'}},0);
 	tl.progress(pct);
