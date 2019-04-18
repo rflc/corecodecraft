@@ -97,6 +97,14 @@ var animate = (function(){
 
     var five = function(pct){
 	let tl = new TimelineMax({paused: true});
+	tl.set('#wasm,#clang,#devil,#web,#pony,#aws,#swift',{autoAlpha:0})
+	  .to('#wasm',1,{autoAlpha:1},1)
+	  .to('#clang',1,{autoAlpha:1},3)
+	  .to('#devil',1,{autoAlpha:1},4)
+	  .to('#web',1,{autoAlpha:1},5)
+	  .to('#pony',1,{autoAlpha:1},6)
+	  .to('#aws',1,{autoAlpha:1},7)
+	  .to('#swift',1,{autoAlpha:1},8);
 	tl.progress(pct);
     }
    
