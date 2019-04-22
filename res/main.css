@@ -135,7 +135,7 @@ p {
 
 
 .e svg {
-    height: 100px;
+    height: 60px;
     
 }
 
@@ -195,7 +195,7 @@ p {
     font-size: 1.5em;
 }
 
-.f div svg {
+.f svg {
     width: 10em;
     transform-origin: left;
     transform: rotateY(48deg);

@@ -185,11 +185,11 @@ var dispatcher = (function(){//{{{
 	    state = box.e;
 	    callToAction.removeEventListener('click', dispatcher);
 	    document.addEventListener('click', function(e){
-		if(e.target.closest('#box')){
+		if(e.target.closest('#c2a')){
 		    return;
 		}
 		else {
-		    alert("exit");
+		    // close box and set state & box.b;
 		}
 		
 	    });
