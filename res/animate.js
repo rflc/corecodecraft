@@ -9,7 +9,7 @@ var timer = null;
 var callToAction;
 
 
-var init = function(){
+var init = function(){//{{{
     // Logo Animation
     var star = document.getElementById("str");
     var arc  = document.getElementById('arc');
@@ -40,7 +40,8 @@ var init = function(){
   
 
     //Contact Form
-   var callToAction = document.getElementById('c2a');
+   callToAction = document.getElementById('c2a');
+   callToAction.addEventListener('click', dispatcher);
     // Get vh dimensions
   /*
     var el = document.createElement('div');
@@ -53,10 +54,9 @@ var init = function(){
 
   scene  = document.getElementsByClassName('scene');
   camera   = document.getElementsByClassName('camera');
-}
+}//}}}
 
-// Function unpdated on scroll
-var animate = (function(){
+var animate = (function(){//{{{
     // Scene one
     var one = function(pct) {
 	let tl = new TimelineMax({paused: true});
@@ -118,10 +118,9 @@ var animate = (function(){
     var arr = [one, two, three, four, five];
 
     return arr;
-})();
+})();//}}}
 
-
-var play = (function(){
+var play = (function(){//{{{
 
   // closure scope
   let lastY = null;
@@ -150,9 +149,76 @@ var play = (function(){
 
     lastY = window.pageYOffset;
   }
-})();
+})();//}}}
+
+function validateEmail(email){//{{{
+      var re = /^([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(\[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}//}}}
+
+var dispatcher = (function(){//{{{
+    var email = document.getElementById('email');
+    var message = document.getElementById('message');
+    var box   = {
+	b:   1, // button
+	e:   2, // email
+	t:   4, // text
+	s:   8  // submitted
+    };
+    var state = box.b;
+
+    return function(e){
+	alert(e.currentTarget.id);
+	e.stopPropagation();
+	/*
+	if (state & box.b) {
+	    console.log("click");
+	    state = null;
+	    state = box.b;
+	    callToAction.addEventListener('click', dispatcher);
+	    animate[0](); // Animate fade out to bttm
+	    return;
+	}
+	*/
+	if(state & box.b){
+	    state ^= box.b;
+	    state = box.e;
+	    callToAction.removeEventListener('click', dispatcher);
+	    document.addEventListener('click', function(e){
+		if(e.target.closest('#box')){
+		    return;
+		}
+		else {
+		    alert("exit");
+		}
+		
+	    });
+	    /*
+	    animate[0](); // reveal email input
+	    */
+	    return;
+	}
+	if(state & box.e){
+	    if (validateEmail(email.value)) {
+		state ^= box.e;
+		state = box.t;
+		animate[0](); // reveal textArea
+		return;
+	    }
+	    else {
+		animamate[0](); // ivalid animation (shake)
+		return;
+	    }
+	}
+	 if (state & box.t) {
+	     if (message.value) {
+		 // submit it
+		 animate[0](); // display thank you
+	     }
+	 }
+    }
+})();//}}}
 
 // Event Listeners
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener('DOMContentLoaded', init);
 document.addEventListener('scroll', play);
-
