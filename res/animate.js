@@ -58,7 +58,7 @@ var init = function(){//{{{
 
 var animate = (function(){//{{{
     // Scene one
-    var one = function(pct) {
+    var f0 = function(pct) {
 	let tl = new TimelineMax({paused: true});
 	tl.set('#imask', {attr:{display: 'visible'}})
 	  .set('#hand', {opacity: 1})
@@ -78,19 +78,19 @@ var animate = (function(){//{{{
     }
 
     // Scene two
-    var two = function(pct){
+    var f1 = function(pct){
 	let tl = new TimelineMax({paused: true});
 	tl.progress(pct);
     }
 
     // Scene three
-    var three = function(pct){
+    var f2 = function(pct){
 	let tl = new TimelineMax({paused: true});
 	tl.progress(pct);
     }
     
     // Scene Four
-    var four = function(pct){
+    var f3 = function(pct){
 	let tl = new TimelineMax({paused: true});
 	tl.set('#lw',{autoAlpha:1,attr:{transform:'translate(-220 -85) scale(1.2)'}})
 	  .set('#rw',{autoAlpha:1,attr:{transform:'translate(145 -85) scale(1.2)'}})
@@ -99,7 +99,8 @@ var animate = (function(){//{{{
 	tl.progress(pct);
     }
 
-    var five = function(pct){
+    // Scene Five
+    var f4 = function(pct){
 	let tl = new TimelineMax({paused: true});
 	tl.set('#wasm,#clang,#devil,#web,#pony,#aws,#swift',{autoAlpha:0})
 	  .to('#stack h2, #stack p',0.1,{visibility:'hidden'})
@@ -114,8 +115,21 @@ var animate = (function(){//{{{
 	  .to('#swift',1,{autoAlpha:1},8);
 	tl.progress(pct);
     }
+
+    // Email animation
+    var f5 = function(){
+	let tl = new TimelineMax({paused: true});
+	/*
+	tl.to('#c2a',1,{transform:'rotateY(0)'})
+	  .set('#lable',{autoAlpha: 0})
+	  .set('#email',{autoAlpha: 1})
+	  */
+	  tl.to('#c2a',3,{width: '100em'});
+	  /*.to('#c2a rect',2,{attr:{transformOrigin:"100% 50%", width: '95%', height:'80%',},ease:Expo.easeInOut});*/
+	tl.play();
+    }
    
-    var arr = [one, two, three, four, five];
+    var arr = [f0, f1, f2, f3, f4, f5];
 
     return arr;
 })();//}}}
@@ -152,12 +166,11 @@ var play = (function(){//{{{
 })();//}}}
 
 function validateEmail(email){//{{{
-      var re = /^([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(\[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var re = '/^([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(\[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
   return re.test(email);
 }//}}}
 
 var dispatcher = (function(){//{{{
-    var email = document.getElementById('email');
     var message = document.getElementById('message');
     var box   = {
 	b:   1, // button
@@ -168,40 +181,50 @@ var dispatcher = (function(){//{{{
     var state = box.b;
 
     return function(e){
-	alert(e.currentTarget.id);
 	e.stopPropagation();
 	/*
 	if (state & box.b) {
-	    console.log("click");
-	    state = null;
-	    state = box.b;
 	    callToAction.addEventListener('click', dispatcher);
 	    animate[0](); // Animate fade out to bttm
 	    return;
 	}
 	*/
+	
 	if(state & box.b){
 	    state ^= box.b;
 	    state = box.e;
 	    callToAction.removeEventListener('click', dispatcher);
+	    animate[5](); // reveal email input
+	    let snd = document.getElementById('snd');
+	    snd.addEventListener('click', dispatcher);
+	    let email = document.getElementById('email');
+	    email.addEventListener('keyup', function(e){
+		if (e.keyCode == 13) {
+		    dispatcher();
+		}
+	    });
 	    document.addEventListener('click', function(e){
 		if(e.target.closest('#c2a')){
+		    console.log('click');
 		    return;
 		}
 		else {
+		    console.log('exit');
+		    return;
 		    // close box and set state & box.b;
 		}
 		
 	    });
-	    /*
-	    animate[0](); // reveal email input
-	    */
 	    return;
 	}
+	
 	if(state & box.e){
+	    console.log('email');
+	    state ^= box.e;
+	    state = box.t;
+	    return;
+	    /*
 	    if (validateEmail(email.value)) {
-		state ^= box.e;
-		state = box.t;
 		animate[0](); // reveal textArea
 		return;
 	    }
@@ -209,8 +232,11 @@ var dispatcher = (function(){//{{{
 		animamate[0](); // ivalid animation (shake)
 		return;
 	    }
+	    */
 	}
+	
 	 if (state & box.t) {
+	     console.log('text');
 	     if (message.value) {
 		 // submit it
 		 animate[0](); // display thank you
