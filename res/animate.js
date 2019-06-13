@@ -40,8 +40,8 @@ var init = function(){//{{{
   
 
     //Contact Form
-   callToAction = document.getElementById('c2a');
-   callToAction.addEventListener('click', dispatcher);
+//   callToAction = document.getElementById('c2a');
+//   callToAction.addEventListener('click', dispatcher);
     // Get vh dimensions
   /*
     var el = document.createElement('div');
@@ -60,20 +60,24 @@ var animate = (function(){//{{{
     // Scene one
     var f0 = function(pct) {
 	let tl = new TimelineMax({paused: true});
-	tl.set('#imask', {attr:{display: 'visible'}})
-	  .set('#hand', {opacity: 1})
+
+	tl.set('#iphone',{attr:{viewBox: '0 0 446.22 754.69'}})
 	  .set('#i2',{attr:{y:'27%'}})
 	  .set('#i3',{attr:{y:'33%'}})
-	  .set('#i4,#i5,#i6',{attr:{visibility:'hidden'}})
-	  .to('#i1',.5,{attr:{visibility:'visible'}})
-	  .to('#i1',.2,{attr:{visibility:'hidden'}})
-	  .to('#i2,#i3',.2,{attr:{visibility:'hidden'}})
-	  .to('#i2,#i3',2,{attr:{visibility:'visible'}})
+	  .set('#i4,#i5,#i6',{attr:{display:'none'}})
+	  .to('#i1',1.5,{attr:{display:''}})
+	  .to('#i1',.2,{attr:{display:'none'}})
+	  .to('#i2,#i3',.2,{attr:{display:'none'}})
+	  .to('#i2,#i3',2,{attr:{display:'',visibility:'visible'}})
 	  .to('#i2',2,{attr:{y:'-10%'}},2)
 	  .to('#i3',2,{attr:{y:'100%'}},2)
-	  .to('#i4,#i5,#i6',2,{attr:{visibility:'visible'}})
+	  .set('#i2,#i3',{attr:{display:'none'}})
+	  .to('#i4,#i5,#i6',2,{attr:{display:''}})
+	  .to('#iphone',3,{attr:{viewBox: '218 200 74.37 125.78'}});
+/*	  .to('body',4,{backgroundColor:'black'});
 	  .to('#hand', 2, {opacity: 0})
 	  .to('#imask',.2, {attr:{display: 'none'}}, 1.8);
+*/
 	tl.progress(pct);
     }
 
@@ -116,8 +120,13 @@ var animate = (function(){//{{{
 	tl.progress(pct);
     }
 
+    // Scene Six
+    var f5 = function(pct){
+	return;
+    }
+
     // Email animation
-    var f5 = function(){
+    var f6 = function(){
 	let tl = new TimelineMax({paused: true});
 	/*
 	tl.to('#c2a',1,{transform:'rotateY(0)'})
@@ -129,7 +138,7 @@ var animate = (function(){//{{{
 	tl.play();
     }
    
-    var arr = [f0, f1, f2, f3, f4, f5];
+    var arr = [f0, f1, f2, f3, f4, f5, f6];
 
     return arr;
 })();//}}}

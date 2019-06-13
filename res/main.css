@@ -1,35 +1,49 @@
 body {
   font-family: helvetica neue, arial, helvetica, freesans, liberation sans, numbus sans l, sans-serif;
   font-weight: 300;
+  font-size: 1.12em;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 960px) minmax(0, 1fr);
   grid-template-rows: auto;
   grid-template-areas:
-    " ... lgo ... "
+    " ... hdr ... "
     " cma cma cma "
     " cmb cmb cmb "
     " cmc cmc cmc "
     " cmd cmd cmd "
-    " stk stk stk "
+    " cme cme cme "
+    " cmf cmf cmf "
     " ... tch ... "
     " ... ... flg ";
 }
 
-.lgo {
+.hdr {
 
-    grid-area: lgo;
+    grid-area: hdr;
     height: 20vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    " left right ";
+    align-items: center;
 }
 
 .logo
 {
+    grid-area: left;
     width: 60px;
     /*width: 60px;*/
     /*height: 67.2px;*/
 }
 
+.hdr a {
+    grid-area: right;
+    justify-self: end;
+}
+
 a {
     text-decoration: none;
+    color: #2D2D2D;
 }
 
 p {
@@ -115,7 +129,7 @@ p {
 }
 
 .E {
-    grid-area: stk;
+    grid-area: cme;
 }
 
 .e {
@@ -179,25 +193,38 @@ p {
 }
 
 .f {
+    grid-area: cmf;
+    justify-items: center;
+}
+
+.f .scene {
+    height: 100vh;
+}
+
+.g {
     grid-area: tch;
     margin-bottom: 20vh;
     margin-top: 20vh;
     
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid blue;
 }
-
+/*
 .f p {
     display: inline;
     float: right;
     margin-right: .5em;
     font-size: 1.5em;
 }
+*/
+.g div {
+    /*z-index: 2;*/
+    position: fixed;
+}
 
-.f svg {
+.g svg {
+    display: none;
     z-index: 2;
     width: 10em;
     transform-origin: left;
@@ -207,12 +234,16 @@ p {
 }
 
 form {
+    /*z-index: 1;*/
+    position: fixed;
     /*display: none;*/
-    /*visibility: hidden;*/
+    visibility: visible;
+    /*transform: rotateY(48deg);*/
     border: solid black;
     border-radius: 8px;
     width: 10em;
     height: 3.6em;
+    background: blue;
 }
 
 /* Set height for text fields */
@@ -240,7 +271,7 @@ textarea {
 }
 
 input {
-    visibility: hidden;
+    /*visibility: hidden;*/
     z-index: 1;
     position: absolute;
     left: -5%; 
@@ -272,12 +303,12 @@ input, textarea {
     text-align: left;
 }
 
-.g {
+.h {
     grid-area: flg;
     justify-self: end;
 }
 
-.g svg {
+.h svg {
     width: 3em;
 }
 
