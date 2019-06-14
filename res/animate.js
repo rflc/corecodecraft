@@ -32,11 +32,13 @@ var init = function(){//{{{
     var tl = new TimelineMax();
     tl.set('#str', {opacity: 0})
       .set('#iphone', {opacity: 0})
+      .set('#plane', {opacity: 0})
       .to(arc, .6, {strokeDashoffset: 0}, .3)
       .to(ant, .6, {strokeDashoffset: 0}, .3)
       .to(rng, .9, {strokeDashoffset: 0}, .6)
       .to(str, .7, {opacity: 1}, 1.5)
-      .to('#iphone', .1, {opacity: 1}, 1.9);
+      .to('#iphone', .1, {opacity: 1}, 1.9)
+      .to('#plane',.1,{opacity: 1},2.3);
   
 
     //Contact Form

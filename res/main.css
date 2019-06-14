@@ -36,9 +36,14 @@ body {
     /*height: 67.2px;*/
 }
 
+
 .hdr a {
     grid-area: right;
     justify-self: end;
+}
+
+.hdr a svg {
+    width: 40px;
 }
 
 a {
@@ -194,10 +199,13 @@ p {
 
 .f {
     grid-area: cmf;
-    justify-items: center;
 }
 
 .f .scene {
+    height: 100vh;
+}
+
+.f svg {
     height: 100vh;
 }
 
