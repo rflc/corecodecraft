@@ -165,8 +165,16 @@ p {
     justify-self: start;
 }
 
-#stack>h2, #stack>p{
+#stack>h2, #stack>p {
     visibility: hidden;
+}
+
+#stack>h2 {
+    color: #EFAFAF;
+}
+
+#stack>p {
+    color: #938FCC;
 }
 
 .e div:nth-of-type(2) {

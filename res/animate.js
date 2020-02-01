@@ -8,6 +8,12 @@ var hStyle;
 var timer = null;
 var callToAction;
 
+// Timelines
+const tl0 = new TimelineMax({paused: true});
+const tl1 = new TimelineMax({paused: true});
+const tl2 = new TimelineMax({paused: true});
+const tl3 = new TimelineMax({paused: true});
+const tl4 = new TimelineMax({paused: true});
 
 var init = function(){//{{{
     // Logo Animation
@@ -56,70 +62,81 @@ var init = function(){//{{{
 
   scene  = document.getElementsByClassName('scene');
   camera   = document.getElementsByClassName('camera');
+
+    // Timelines Definitions
+    tl0.set('#iphone',{attr:{viewBox: '0 0 446.22 754.69'}})
+	.set('#i2',{attr:{y:'27%'}})
+	.set('#i3',{attr:{y:'33%'}})
+	.set('#i4,#i5,#i6',{attr:{display:'none'}})
+	.to('#i1',1.5,{attr:{display:''}})
+	.to('#i1',.2,{attr:{display:'none'}})
+	.to('#i2,#i3',.2,{attr:{display:'none'}})
+	.to('#i2,#i3',2,{attr:{display:'',visibility:'visible'}})
+	.to('#i2',2,{attr:{y:'-10%'}},2)
+	.to('#i3',2,{attr:{y:'100%'}},2)
+	.set('#i2,#i3',{attr:{display:'none'}})
+	.to('#i4,#i5,#i6',2,{attr:{display:''}})
+	.to('#iphone',3,{attr:{viewBox: '218 200 74.37 125.78'}})
+	/*.to('#iphone',3,{display:'none'})
+	.to('#hand',2, {opacity: 0})
+	.to('#imask',.2, {attr:{display: 'none'}}, 1.8)*/
+        .to('body',2, {backgroundColor:'#000'},13);
+	  
+    tl3.set('#lw',{autoAlpha:1,attr:{transform:'translate(-220 -85) scale(1.2)'}})
+	.set('#rw',{autoAlpha:1,attr:{transform:'translate(145 -85) scale(1.2)'}})
+	.to('#lw',3,{attr:{transform:'translate(0 0) scale(1)'}})
+	.to('#rw',3,{attr:{transform:'translate(0 0) scale(1)'}},0);
+
+    tl4.set('#wasm,#clang,#devil,#web,#pony,#aws,#swift',{autoAlpha:0})
+	.to('#stack h2, #stack p',0.1,{visibility:'hidden'})
+	.to('#stack h2',1,{autoAlpha:1})
+	.to('#stack p',1,{autoAlpha:1},1)
+	.to('#wasm',1,{autoAlpha:1},2)
+	.to('#clang',1,{autoAlpha:1},3)
+	.to('#devil',1,{autoAlpha:1},4)
+	.to('#web',1,{autoAlpha:1},5)
+	.to('#pony',1,{autoAlpha:1},6)
+	.to('#aws',1,{autoAlpha:1},7)
+	.to('#swift',1,{autoAlpha:1},8);
 }//}}}
 
-var animate = (function(){//{{{
-    // Scene one
-    var f0 = function(pct) {
-	let tl = new TimelineMax({paused: true});
-
-	tl.set('#iphone',{attr:{viewBox: '0 0 446.22 754.69'}})
-	  .set('#i2',{attr:{y:'27%'}})
-	  .set('#i3',{attr:{y:'33%'}})
-	  .set('#i4,#i5,#i6',{attr:{display:'none'}})
-	  .to('#i1',1.5,{attr:{display:''}})
-	  .to('#i1',.2,{attr:{display:'none'}})
-	  .to('#i2,#i3',.2,{attr:{display:'none'}})
-	  .to('#i2,#i3',2,{attr:{display:'',visibility:'visible'}})
-	  .to('#i2',2,{attr:{y:'-10%'}},2)
-	  .to('#i3',2,{attr:{y:'100%'}},2)
-	  .set('#i2,#i3',{attr:{display:'none'}})
-	  .to('#i4,#i5,#i6',2,{attr:{display:''}})
-	  .to('#iphone',3,{attr:{viewBox: '218 200 74.37 125.78'}});
-/*	  .to('body',4,{backgroundColor:'black'});
-	  .to('#hand', 2, {opacity: 0})
-	  .to('#imask',.2, {attr:{display: 'none'}}, 1.8);
+/*
+var dimmer = (function(){
+    calls = 0;
+    var bo = new TimelineMax({paused: true}); 
+    bo.to('')
+    return function(){
+	if (calls % 2 == 0) {
+	}
+    }  
+})();
 */
-	tl.progress(pct);
+
+var animate = (function(){//{{{
+    // Scene one // should be a closure with a returned function 
+
+    let f0 = function(pct){
+	tl0.progress(pct);
     }
 
     // Scene two
-    var f1 = function(pct){
-	let tl = new TimelineMax({paused: true});
-	tl.progress(pct);
+    let f1 = function(pct){
+	tl1.progress(pct);
     }
 
     // Scene three
-    var f2 = function(pct){
-	let tl = new TimelineMax({paused: true});
-	tl.progress(pct);
+    let f2 = function(pct){
+	tl2.progress(pct);
     }
     
     // Scene Four
-    var f3 = function(pct){
-	let tl = new TimelineMax({paused: true});
-	tl.set('#lw',{autoAlpha:1,attr:{transform:'translate(-220 -85) scale(1.2)'}})
-	  .set('#rw',{autoAlpha:1,attr:{transform:'translate(145 -85) scale(1.2)'}})
-	  .to('#lw',3,{attr:{transform:'translate(0 0) scale(1)'}})
-	  .to('#rw',3,{attr:{transform:'translate(0 0) scale(1)'}},0);
-	tl.progress(pct);
+    let f3 = function(pct){
+	tl3.progress(pct);
     }
 
     // Scene Five
-    var f4 = function(pct){
-	let tl = new TimelineMax({paused: true});
-	tl.set('#wasm,#clang,#devil,#web,#pony,#aws,#swift',{autoAlpha:0})
-	  .to('#stack h2, #stack p',0.1,{visibility:'hidden'})
-	  .to('#stack h2',1,{autoAlpha:1})
-	  .to('#stack p',1,{autoAlpha:1},1)
-	  .to('#wasm',1,{autoAlpha:1},2)
-	  .to('#clang',1,{autoAlpha:1},3)
-	  .to('#devil',1,{autoAlpha:1},4)
-	  .to('#web',1,{autoAlpha:1},5)
-	  .to('#pony',1,{autoAlpha:1},6)
-	  .to('#aws',1,{autoAlpha:1},7)
-	  .to('#swift',1,{autoAlpha:1},8);
-	tl.progress(pct);
+    let f4 = function(pct){
+	tl4.progress(pct);
     }
 
     // Scene Six
@@ -139,7 +156,7 @@ var animate = (function(){//{{{
 	  /*.to('#c2a rect',2,{attr:{transformOrigin:"100% 50%", width: '95%', height:'80%',},ease:Expo.easeInOut});*/
 	tl.play();
     }
-   
+
     var arr = [f0, f1, f2, f3, f4, f5, f6];
 
     return arr;
