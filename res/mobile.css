@@ -16,7 +16,7 @@ body {
     " ... cme ... "
     " ... cmf ... "
     " ... tch ... "
-    " ... flg ... ";
+    " ... ftr ... ";
 }
 
 .hdr {
@@ -326,7 +326,7 @@ input, textarea {
 }
 
 .h {
-    grid-area: flg;
+    grid-area: ftr;
     justify-self: end;
 }
 
