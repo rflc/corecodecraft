@@ -327,7 +327,6 @@ input, textarea {
 
 .h {
     grid-area: ftr;
-    justify-self: end;
 }
 
 .h svg {
