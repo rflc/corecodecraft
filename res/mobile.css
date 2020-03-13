@@ -1,7 +1,3 @@
-/* Begining of mobile media query*/
-@media only screen 
-       and (max-device-width: 600px) 
-{
 body {
   color: #C4B1DD;
   background-color: #000;
@@ -410,4 +406,11 @@ input, textarea {
   background-image: url('res/img/mask.jpg');
   background-repeat: no-repeat;
 }
-} /* End of mobile media query */
+
+@media only screen
+and (min-device-width: 600px)
+{
+    body {
+	background: white
+    }
+} /* media query end */
