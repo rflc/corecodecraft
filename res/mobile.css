@@ -140,7 +140,7 @@ background: linear-gradient(63deg, #C49090 0%, #9B17CA 100%);
 }
 
 .E.camera {
-    height: 200vh; /* local timeline overwrite */
+    height: 300vh; /* local timeline overwrite */
 }
 
 
@@ -157,6 +157,7 @@ background: linear-gradient(63deg, #C49090 0%, #9B17CA 100%);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 10vh 10vh 10vh;
+    grid-gap: 2em;
     grid-template-areas:
     " a  b  c "
     " d  e  f "
