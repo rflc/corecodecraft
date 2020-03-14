@@ -168,12 +168,8 @@ background: linear-gradient(63deg, #C49090 0%, #9B17CA 100%);
 }
 
 .ea svg {
-    min-width:3em;
-    min-height: 2em;
-    /*
-    max-width: 3em;
-    max-height: 2em;
-    */
+    width:3em;
+    height: 2em;
 }
 
 
