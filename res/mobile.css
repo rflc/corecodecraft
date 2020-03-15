@@ -323,7 +323,7 @@ input, textarea {
 
 .h {
     grid-area: ftr;
-    height: 15vh;
+    height: min-content;
     display: grid;
     grid-template-columns: min-content min-content auto;
     grid-template-rows: auto;
