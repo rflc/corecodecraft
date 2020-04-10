@@ -13,7 +13,7 @@ body {
     " ... cmb ... "
     " ... cmc ... "
     " ... cmd ... "
-    " ... cme ... "
+    " cme cme cme "
     " ... cmf ... "
     " ... ftr ... ";
 }
@@ -204,6 +204,11 @@ background: linear-gradient(63deg, #C49090 0%, #9B17CA 100%);
 
 .e div:nth-of-type(8) {
     grid-area: h;
+}
+
+#client {
+    align-self: start;
+
 }
 
 .f {
